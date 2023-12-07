@@ -15,11 +15,22 @@ void displayBoard(){
 	cout << "\n\t" << row3[0] << "|" << row3[1] << "|" << row3[2] << "|"<<endl;
 }
 
+
+void displayBoard2() {
+
+	char array[3][3] = {
+			{' ', ' ', ' '},
+			{' ', ' ',' '},
+			{' ', ' ', ' '}
+	};
+
+}
+
 int main()
 
-{
-	
+{	
 	displayBoard();
+	displayBoard2();
 
 
 
