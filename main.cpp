@@ -19,9 +19,17 @@ void displayBoard() {
 
 }
 
+void instructions() {
+	cout << "Welcome to tic toe land" << endl;
+	cout << "The board is a 3x3 grid and each cell represented by its row and column number" << endl;
+	cout << "To make a move, enter the row and column where you want to place symbol" << endl;
+	cout << "Hint: Place you symbol in the left corner of the board by entering '0 0' ";
+}
+
 int main()
 
 {	
+	instructions();
 	displayBoard();
 
 
