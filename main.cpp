@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-
+char playerSymbol;
 void displayBoard() {
 
 	char array[3][3] = {
@@ -25,6 +25,17 @@ void instructions() {
 	cout << "To make a move, enter the row and column where you want to place symbol" << endl;
 	cout << "Hint: Place you symbol in the left corner of the board by entering '0 0' ";
 }
+
+bool playerMove(char setArray [3][3], int row, int col) {
+	if (setArray[row][col] == ' ') {
+		setArray[row][col] = playerSymbol;
+		return true;
+	}
+	else {
+		cout << "Invalid, position has been taken";
+		return false;
+	}
+} 
 
 int main()
 
