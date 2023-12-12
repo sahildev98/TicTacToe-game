@@ -30,6 +30,15 @@ bool playerMove(char setArray [3][3], int row, int col, char playerSymbol) {
 	}
 } 
 
+char askPlayer() {
+	char question;
+	do {
+		cout << "Do you want to go first? (y / no)";
+		cin >> question;
+	} while (question != 'y' && question != 'n');
+
+	return question;
+}
 int main()
 {	
 	char array[3][3] = {
