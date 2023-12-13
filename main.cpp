@@ -58,6 +58,7 @@ int main()
 			{' ', ' ',' '},
 			{' ', ' ', ' '}
 	};
+	instructions();
 	char askUser = askPlayer();
 	if (askUser == 'y') {
 		cout << "Great! You go first?";
@@ -65,8 +66,12 @@ int main()
 	else {
 		cout << "Sure, i'll go first";
 	}
-	instructions();
-	displayBoard(array);
+
+	for (int i = 0; i <= 9; i++) {
+		makeMove(array);
+		displayBoard(array);
+	}
+	
 
 
 
