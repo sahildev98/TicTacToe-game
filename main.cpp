@@ -33,7 +33,7 @@ bool playerMove(char setArray [3][3], int row, int col, char playerSymbol) {
 char askPlayer() {
 	char question;
 	do {
-		cout << "Do you want to go first? (y / no)";
+		cout << "Do you want to go first? (y / no) ";
 		cin >> question;
 	} while (question != 'y' && question != 'n');
 
@@ -46,6 +46,13 @@ int main()
 			{' ', ' ',' '},
 			{' ', ' ', ' '}
 	};
+	char askUser = askPlayer();
+	if (askUser == 'y') {
+		cout << "Great! You go first?";
+	}
+	else {
+		cout << "Sure, i'll go first";
+	}
 	instructions();
 	displayBoard(array);
 
