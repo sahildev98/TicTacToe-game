@@ -35,11 +35,10 @@ void makeMove(char setArray[3][3]) {
 	int col;
 	do
 	{
-		cout << "Enter a row to place your marker on the board";
-		cin >> col;
-		cout << "Enter which column to place your marker on the board";
-		cin >> row;
-	} while (row < 0 || row >=3 || col < 0 || col>=3 );
+		cout << "Enter a row and column position to place your marker on the board."<<endl <<" e.g(0 0 or 1 3) ";
+		cin >> col >> row;
+		// TODO: MARKER IS NOT SHOWING ON BOARD. NEED ADDRESSING. 
+	} while (row < 0 || row >=3 || col < 0 || col>=3 || !playerMove(setArray, row, col, playerSymbol) );
 }
 
 char askPlayer() {
