@@ -30,6 +30,18 @@ bool playerMove(char setArray [3][3], int row, int col, char playerSymbol) {
 	}
 } 
 
+void makeMove(char setArray[3][3]) {
+	int row; 
+	int col;
+	do
+	{
+		cout << "Enter a row to place your marker on the board";
+		cin >> col;
+		cout << "Enter which column to place your marker on the board";
+		cin >> row;
+	} while (row < 0 || row >=3 || col < 0 || col>=3 );
+}
+
 char askPlayer() {
 	char question;
 	do {
