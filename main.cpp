@@ -22,15 +22,15 @@ void instructions() {
 bool playerMove(char setArray[3][3]) {
 	int row, col;
 	cout << "Enter a row and column position to place your marker on the board." << endl << " e.g(0 0 or 1 3) ";
-	cin >> col >> row;
-	if (setArray[row][col] == ' ') {
-		setArray[row][col] = playerSymbol;
-		return true;
+	cin >> row  >> col;
+	while (setArray[row][col] != ' ')
+	{
+		cout << "Invalid, position has been taken"<<endl;
+		cin >> row >> col;
 	}
-	else {
-		cout << "Invalid, position has been taken";
-		return false;
-	}
+	setArray[row][col] = playerSymbol;
+	return true;
+
 } 
 
 char askPlayer() {
@@ -53,9 +53,11 @@ int main()
 	char askUser = askPlayer();
 	if (askUser == 'y') {
 		cout << "Great! You go first"<<endl;
+		playerSymbol = 'X';
 	}
 	else {
 		cout << "Sure, i'll go first"<<endl;
+		playerSymbol = 'O';
 	}
 
 	for (int i = 0; i <= 9; i++) {
