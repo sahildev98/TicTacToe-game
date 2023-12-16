@@ -19,7 +19,10 @@ void instructions() {
 	cout << "Hint: Place you symbol in the left corner of the board by entering '0 0'" << endl;
 }
 
-bool playerMove(char setArray [3][3], int row, int col, char playerSymbol) {
+bool playerMove(char setArray[3][3]) {
+	int row, col;
+	cout << "Enter a row and column position to place your marker on the board." << endl << " e.g(0 0 or 1 3) ";
+	cin >> col >> row;
 	if (setArray[row][col] == ' ') {
 		setArray[row][col] = playerSymbol;
 		return true;
@@ -29,17 +32,6 @@ bool playerMove(char setArray [3][3], int row, int col, char playerSymbol) {
 		return false;
 	}
 } 
-
-void makeMove(char setArray[3][3]) {
-	int row; 
-	int col;
-	do
-	{
-		cout << "Enter a row and column position to place your marker on the board."<<endl <<" e.g(0 0 or 1 3) ";
-		cin >> col >> row;
-		// TODO: MARKER IS NOT SHOWING ON BOARD. NEED ADDRESSING. 
-	} while (row < 0 || row >=3 || col < 0 || col>=3 || !playerMove(setArray, row, col, playerSymbol) );
-}
 
 char askPlayer() {
 	char question;
@@ -60,14 +52,14 @@ int main()
 	instructions();
 	char askUser = askPlayer();
 	if (askUser == 'y') {
-		cout << "Great! You go first?";
+		cout << "Great! You go first"<<endl;
 	}
 	else {
-		cout << "Sure, i'll go first";
+		cout << "Sure, i'll go first"<<endl;
 	}
 
 	for (int i = 0; i <= 9; i++) {
-		makeMove(array);
+		playerMove(array);
 		displayBoard(array);
 	}
 	
