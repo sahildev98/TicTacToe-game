@@ -2,14 +2,14 @@
 using namespace std;
 
 char playerSymbol;
-void displayBoard(char array[3][3]) {
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
-			cout <<"  " << "|" << array[i][j];
+void displayBoard(char setArray[9]) {
+	for (int i = 0; i < 9; i++) {
+		cout << " | " << setArray[i];
+		if ((i + 1) % 3 == 0) {
+			// if reached the final column, begin a new row
+			cout << endl;
 		}
-		cout << endl;
 	}
-
 }
 
 void instructions() {
@@ -19,16 +19,16 @@ void instructions() {
 	cout << "Hint: Place you symbol in the left corner of the board by entering '0 0'" << endl;
 }
 
-bool playerMove(char setArray[3][3]) {
-	int row, col;
-	cout << "Enter a row and column position to place your marker on the board." << endl << " e.g(0 0 or 1 3) ";
-	cin >> row  >> col;
-	while (setArray[row][col] != ' ')
+bool playerMove(char setArray[9]) {
+	int row;
+	cout << "Enter a number based on board position " << endl;
+	cin >> row ;
+	while (setArray[row]!= ' ')
 	{
 		cout << "Invalid, position has been taken"<<endl;
-		cin >> row >> col;
+		cin >> row;
 	}
-	setArray[row][col] = playerSymbol;
+	setArray[row] = playerSymbol;
 	return true;
 
 } 
@@ -44,10 +44,10 @@ char askPlayer() {
 }
 int main()
 {	
-	char array[3][3] = {
-			{' ', ' ', ' '},
-			{' ', ' ',' '},
-			{' ', ' ', ' '}
+	char array[9] = {
+			' ', ' ', ' ',
+			' ', ' ',' ',
+			' ', ' ', ' '
 	};
 	instructions();
 	char askUser = askPlayer();
@@ -62,7 +62,7 @@ int main()
 
 	for (int i = 0; i <= 9; i++) {
 		playerMove(array);
-		displayBoard(array);
+		displayBoard(array);	
 	}
 	
 
