@@ -19,6 +19,15 @@ void instructions() {
 	cout << "Hint: Place you symbol in the left corner of the board by entering '0 0'" << endl;
 }
 
+void guide(char setArray[9]) {
+	for (int i = 0; i < 9; i++) {
+		cout << i + 1 << " | " << setArray[i];
+		if ((i + 1) % 3 == 0) {
+			cout << endl;
+		}
+	}
+}
+
 bool playerMove(char setArray[9]) {
 	int row;
 	cout << "Enter a number based on board position " << endl;
@@ -61,6 +70,7 @@ int main()
 	}
 
 	for (int i = 0; i <= 9; i++) {
+		guide(array);
 		playerMove(array);
 		displayBoard(array);	
 	}
