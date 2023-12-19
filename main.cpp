@@ -4,7 +4,7 @@ using namespace std;
 char playerSymbol;
 void displayBoard(char setArray[9]) {
 	for (int i = 0; i < 9; i++) {
-		cout << " | " << setArray[i];
+		cout << setArray[i] << " | ";
 		if ((i + 1) % 3 == 0) {
 			// if reached the final column, begin a new row
 			cout << endl;
@@ -15,8 +15,8 @@ void displayBoard(char setArray[9]) {
 void instructions() {
 	cout << "Welcome to tic toe land" << endl;
 	cout << "The board is a 3x3 grid and each cell represented by its row and column number" << endl;
-	cout << "To make a move, enter the row and column where you want to place symbol" << endl;
-	cout << "Hint: Place you symbol in the left corner of the board by entering '0 0'" << endl;
+	cout << "To make a move, enter the row number based on the board to place symbol" << endl;
+	cout << "Hint: pick any numbers between 1 - 9 " << endl;
 }
 
 void guide(char setArray[9]) {
@@ -59,6 +59,7 @@ int main()
 			' ', ' ', ' '
 	};
 	instructions();
+	guide(array);
 	char askUser = askPlayer();
 	if (askUser == 'y') {
 		cout << "Great! You go first"<<endl;
@@ -70,7 +71,6 @@ int main()
 	}
 
 	for (int i = 0; i <= 9; i++) {
-		guide(array);
 		playerMove(array);
 		displayBoard(array);	
 	}
