@@ -14,9 +14,9 @@ void displayBoard(char setArray[9]) {
 
 void instructions() {
 	cout << "Welcome to tic toe land" << endl;
-	cout << "The board is a 3x3 grid and each cell represented by its row and column number" << endl;
+	cout << "The board is a 3x3 grid and each cell represented by its row number" << endl;
 	cout << "To make a move, enter the row number based on the board to place symbol" << endl;
-	cout << "Hint: pick any numbers between 1 - 9 " << endl;
+	cout << "Hint: Pick any numbers between 1 - 9 " << endl;
 }
 
 void guide(char setArray[9]) {
