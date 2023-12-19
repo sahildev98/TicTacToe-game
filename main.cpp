@@ -37,6 +37,7 @@ bool playerMove(char setArray[9]) {
 		cout << "Invalid, position has been taken"<<endl;
 		cin >> row;
 	}
+	row--;
 	setArray[row] = playerSymbol;
 	return true;
 
