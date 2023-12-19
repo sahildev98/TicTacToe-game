@@ -31,6 +31,11 @@ void guide(char setArray[9]) {
 bool playerMove(char setArray[9]) {
 	int position;
 	cout << "Enter a number based on board position " << endl;
+	// this is probably the biggest changes
+	// !(cin >> position) will ask the question as part of the loop and it must have an answer
+	// to save on checking all positions, just validated numbers below or above 1
+	// cin.peek() will check the next character after any numbers to confirm it is a new line, if it is a . for example for a decimal, it will register invalid
+	// position != static_cast<int>(position) just makes sure it is a number
 	while (!(cin >> position) || position < 1 || position > 9 || cin.peek() != '\n' || position != static_cast<int>(position))
 	{
 		cout << "Invalid, position has been taken"<<endl;
