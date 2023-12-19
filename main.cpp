@@ -29,16 +29,15 @@ void guide(char setArray[9]) {
 }
 
 bool playerMove(char setArray[9]) {
-	int row;
+	int position;
 	cout << "Enter a number based on board position " << endl;
-	cin >> row ;
-	while (setArray[row]!= ' ')
+	while (!(cin >> position) || position < 1 || position > 9 || cin.peek() != '\n' || position != static_cast<int>(position))
 	{
 		cout << "Invalid, position has been taken"<<endl;
-		cin >> row;
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	}
-	row--;
-	setArray[row] = playerSymbol;
+	setArray[position - 1] = playerSymbol;
 	return true;
 
 } 
