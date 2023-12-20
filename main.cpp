@@ -56,6 +56,23 @@ char askPlayer() {
 
 	return question;
 }
+
+
+// TODO: fix issue with plotting the opposite marker i.e O noughts
+bool computerMove(char setArray[9]) {
+	int position;
+	srand(time(0));
+
+	while (true) {
+		position = rand() % 9;
+		if (setArray[position] == ' ') {
+			setArray[position - 1] = playerSymbol;
+			return true;
+			break;
+		}
+	}
+
+}
 int main()
 {	
 	char array[9] = {
@@ -72,12 +89,14 @@ int main()
 	}
 	else {
 		cout << "Sure, i'll go first"<<endl;
+		computerMove(array);
 		playerSymbol = 'O';
 	}
 
 	for (int i = 0; i <= 9; i++) {
 		playerMove(array);
-		displayBoard(array);	
+		computerMove(array);
+		displayBoard(array);
 	}
 	
 
