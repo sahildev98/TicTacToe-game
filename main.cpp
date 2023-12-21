@@ -90,7 +90,7 @@ bool computerMove(char setArray[9]) {
 	while (true) {
 		position = rand() % 9;
 		if (setArray[position] == ' ') {
-			setArray[position - 1] = playerSymbol;
+			setArray[position] = opponentPiece(player);
 			return true;
 			break;
 		}
