@@ -72,6 +72,15 @@ char playerPiece() {
 	}
 }
 
+char opponentPiece(char symbol) {
+	if (symbol == player) {
+		return computer;
+	}
+	else {
+		return player;
+	}
+}
+
 
 // TODO: fix issue with plotting the opposite marker i.e O noughts
 bool computerMove(char setArray[9]) {
@@ -97,7 +106,8 @@ int main()
 	};
 	instructions();
 	guide(array);
-
+	char human = playerPiece();
+	char computer = opponentPiece(human);
 	for (int i = 0; i <= 9; i++) {
 		playerMove(array);
 		computerMove(array);
