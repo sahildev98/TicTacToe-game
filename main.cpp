@@ -82,7 +82,8 @@ char opponentPiece(char symbol) {
 }
 
 
-// TODO: fix issue with plotting the opposite marker i.e O noughts
+//TOD0: Issue with input of 'n and player unable to switch to '0'.
+//TOD0: When player plots a poistion of the computer it replaces it. Need to fix
 bool computerMove(char setArray[9]) {
 	int position;
 	srand(time(0));
