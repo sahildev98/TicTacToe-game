@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+char player = 'X';
+char computer = 'O';
 char playerSymbol;
 void displayBoard(char setArray[9]) {
 	for (int i = 0; i < 9; i++) {
@@ -42,19 +44,32 @@ bool playerMove(char setArray[9]) {
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	}
-	setArray[position - 1] = playerSymbol;
+	setArray[position - 1] = player;
 	return true;
 
 } 
 
-char askPlayer() {
-	char question;
+char askPlayer(string question) {
+	char response;
 	do {
-		cout << "Do you want to go first? (y / no) ";
-		cin >> question;
-	} while (question != 'y' && question != 'n');
+		cout << question;
+		cin >> response;
+	} while (response != 'y' && response != 'n');
 
-	return question;
+	return response;
+}
+
+
+char playerPiece() {
+	char go_first = askPlayer("Do you want to go first? (y / no) ");
+	if (go_first == 'y') {
+		cout << "Great! You go first" << endl;
+		 return player;
+	}
+	else {
+		cout << "Sure, i'll go first" << endl;
+		return computer;
+	}
 }
 
 
@@ -82,16 +97,6 @@ int main()
 	};
 	instructions();
 	guide(array);
-	char askUser = askPlayer();
-	if (askUser == 'y') {
-		cout << "Great! You go first"<<endl;
-		playerSymbol = 'X';
-	}
-	else {
-		cout << "Sure, i'll go first"<<endl;
-		computerMove(array);
-		playerSymbol = 'O';
-	}
 
 	for (int i = 0; i <= 9; i++) {
 		playerMove(array);
