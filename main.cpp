@@ -12,7 +12,6 @@ private:
 	// char computer;
 public:
 	TicTacToe() : array{ ' ', ' ', ' ',' ', ' ',' ',' ', ' ', ' ' } {
-		currentPlayer = askPlayer("Do you want to go first? (y/n)") == 'y' ? 'X' : 'O';
 		updateOpponent();
 	}
 
@@ -21,7 +20,7 @@ public:
 			currentPlayer = 'O';
 		}
 		else {
-			currentPlayer = 'x';
+			currentPlayer = 'X';
 		}
 	}
 
@@ -32,13 +31,27 @@ public:
 		cout << "Hint: Pick any numbers between 1 - 9 " << endl;
 	}
 
-	void guide(char setArray[9]) {
+	void guide() {
 		for (int i = 0; i < 9; i++) {
-			cout << i + 1 << " | " << setArray[i];
+			cout << i + 1 << " | " << array[i];
 			if ((i + 1) % 3 == 0) {
 				cout << endl;
 			}
 		}
+	}
+
+	char askPlayer(string question) {
+		char response;
+		do {
+			cout << question;
+			cin >> response;
+		} while (response != 'y' && response != 'n');
+
+		return response;
+	}
+
+	void startGame() {
+	 currentPlayer = askPlayer("Do you want to go first? (y/n)") == 'y' ? 'X' : 'O';
 	}
 
 	void displayBoard(char setArray[9]) {
@@ -85,15 +98,6 @@ public:
 	}
 
 private:
-	char askPlayer(string question) {
-		char response;
-		do {
-			cout << question;
-			cin >> response;
-		} while (response != 'y' && response != 'n');
-
-		return response;
-	}
 	void updateOpponent() {
 		opponent = (currentPlayer== 'X') ? 'O' : 'X';
 	}
@@ -125,19 +129,19 @@ char opponentPiece(char symbol) {
 */
 int main()
 {
-	char array[9] = {
-			' ', ' ', ' ',
-			' ', ' ',' ',
-			' ', ' ', ' '
-	};
-	guide(array);
-	char human = playerPiece();
-	char computer = opponentPiece(human);
+	TicTacToe game;
+	game.instructions();
+	game.guide();
+	game.startGame();
+	// char human = playerPiece();
+	//char computer = opponentPiece(human);
+	/*
 	for (int i = 0; i <= 9; i++) {
 		playerMove(array);
 		computerMove(array);
 		displayBoard(array);
 	}
+	*/
 	
 
 
