@@ -96,6 +96,10 @@ public:
 		}
 	}
 
+	char* getArray() {
+		return array;
+	}
+
 private:
  	void updateOpponent() {
 		opponent = (currentPlayer== 'X') ? 'O' : 'X';
@@ -132,15 +136,14 @@ int main()
 	game.instructions();
 	game.guide();
 	game.startGame();
-	// char human = playerPiece();
-	//char computer = opponentPiece(human);
-	/*
+	char* gameArray = game.getArray();
+	
 	for (int i = 0; i <= 9; i++) {
-		playerMove(array);
-		computerMove(array);
-		displayBoard(array);
+		game.playerMove(gameArray);
+		game.computerMove(gameArray);
+		game.displayBoard(gameArray);
 	}
-	*/
+	
 
 	
 
