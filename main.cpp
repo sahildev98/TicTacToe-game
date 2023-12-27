@@ -15,15 +15,6 @@ public:
 		updateOpponent();
 	}
 
-	void SwitchPlayer() {
-		if (currentPlayer == 'X') {
-			currentPlayer = 'O';
-		}
-		else {
-			currentPlayer = 'X';
-		}
-	}
-	
 	void instructions() {
 		cout << "Welcome to tic toe land" << endl;
 		cout << "The board is a 3x3 grid and each cell represented by its row number" << endl;
@@ -89,7 +80,7 @@ public:
 		while (true) {
 			position = rand() % 9;
 			if (array[position] == ' ') {
-				array[position] = currentPlayer;
+				array[position] = updateOpponent();
 				return true;
 				break;
 			}
@@ -101,11 +92,11 @@ public:
 	}
 
 private:
- 	void updateOpponent() {
-		opponent = (currentPlayer== 'X') ? 'O' : 'X';
-	}
-	 
+	char updateOpponent() {
+		opponent = (currentPlayer == 'X') ? 'O' : 'X';
+		return opponent;
 
+	}
 
 };
 /*
