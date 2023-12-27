@@ -23,7 +23,7 @@ public:
 			currentPlayer = 'X';
 		}
 	}
-
+	
 	void instructions() {
 		cout << "Welcome to tic toe land" << endl;
 		cout << "The board is a 3x3 grid and each cell represented by its row number" << endl;
@@ -63,7 +63,7 @@ public:
 			}
 		}
 	}
-	bool playerMove(char setArray[9]) {
+	bool playerMove(char *array) {
 		int position;
 		cout << "Enter a number based on board position " << endl;
 		// this is probably the biggest changes
@@ -77,32 +77,31 @@ public:
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		}
-		setArray[position - 1] = currentPlayer;
+		array[position - 1] = currentPlayer;
 		return true;
 
 	}
 
-	bool computerMove(char setArray[9]) {
+	bool computerMove(char *array) {
 		int position;
 		srand(time(0));
 
 		while (true) {
 			position = rand() % 9;
-			if (setArray[position] == ' ') {
-				setArray[position] = currentPlayer;
+			if (array[position] == ' ') {
+				array[position] = currentPlayer;
 				return true;
 				break;
 			}
 		}
-
 	}
 
 private:
-	void updateOpponent() {
+ 	void updateOpponent() {
 		opponent = (currentPlayer== 'X') ? 'O' : 'X';
 	}
-
 	 
+
 
 };
 /*
@@ -142,8 +141,8 @@ int main()
 		displayBoard(array);
 	}
 	*/
-	
 
+	
 
 
 
