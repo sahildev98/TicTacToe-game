@@ -9,7 +9,6 @@ private:
 	char array[9];
 	char currentPlayer;
 	char opponent;
-	// char computer;
 public:
 	TicTacToe() : array{ ' ', ' ', ' ',' ', ' ',' ',' ', ' ', ' ' } {
 		updateOpponent();
@@ -31,15 +30,6 @@ public:
 		}
 	}
 
-	char askPlayer(string question) {
-		char response;
-		do {
-			cout << question;
-			cin >> response;
-		} while (response != 'y' && response != 'n');
-
-		return response;
-	}
 
 	void startGame() {
 	 currentPlayer = askPlayer("Do you want to go first? (y/n)") == 'y' ? 'X' : 'O';
@@ -54,7 +44,24 @@ public:
 			}
 		}
 	}
-	bool playerMove(char *array) {
+	
+	void performPlayer() {
+		playerMove(array);
+	
+	}
+
+	void performComputer() {
+		 computerMove(array);
+	}
+
+private:
+	char updateOpponent() {
+		opponent = (currentPlayer == 'X') ? 'O' : 'X';
+		return opponent;
+
+	}
+
+	bool playerMove(char* array) {
 		int position;
 		cout << "Enter a number based on board position " << endl;
 		// this is probably the biggest changes
@@ -73,7 +80,7 @@ public:
 
 	}
 
-	bool computerMove(char *array) {
+	bool computerMove(char* array) {
 		int position;
 		srand(time(0));
 
@@ -87,15 +94,14 @@ public:
 		}
 	}
 
-	char* getArray() {
-		return array;
-	}
+	char askPlayer(string question) {
+		char response;
+		do {
+			cout << question;
+			cin >> response;
+		} while (response != 'y' && response != 'n');
 
-private:
-	char updateOpponent() {
-		opponent = (currentPlayer == 'X') ? 'O' : 'X';
-		return opponent;
-
+		return response;
 	}
 
 };
@@ -130,8 +136,8 @@ int main()
 	char* gameArray = game.getArray();
 	
 	for (int i = 0; i <= 9; i++) {
-		game.playerMove(gameArray);
-		game.computerMove(gameArray);
+		game.performPlayer();
+		game.performComputer();
 		game.displayBoard(gameArray);
 	}
 	
