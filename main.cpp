@@ -35,9 +35,9 @@ public:
 	 currentPlayer = askPlayer("Do you want to go first? (y/n)") == 'y' ? 'X' : 'O';
 	}
 
-	void displayBoard(char setArray[9]) {
+	void displayBoard() {
 		for (int i = 0; i < 9; i++) {
-			cout << setArray[i] << " | ";
+			cout << array[i] << " | ";
 			if ((i + 1) % 3 == 0) {
 				// if reached the final column, begin a new row
 				cout << endl;
@@ -133,12 +133,11 @@ int main()
 	game.instructions();
 	game.guide();
 	game.startGame();
-	char* gameArray = game.getArray();
 	
 	for (int i = 0; i <= 9; i++) {
 		game.performPlayer();
 		game.performComputer();
-		game.displayBoard(gameArray);
+		game.displayBoard();
 	}
 	
 
