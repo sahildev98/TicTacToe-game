@@ -54,6 +54,10 @@ public:
 		 computerMove(array);
 	}
 
+	void verifyWinner() {
+		checkWinner(array, currentPlayer, opponent);
+	}
+
 private:
 	char updateOpponent() {
 		opponent = (currentPlayer == 'X') ? 'O' : 'X';
@@ -104,6 +108,58 @@ private:
 		return response;
 	}
 
+	bool checkWinner(char* array, char player, char computer) {
+		// rows
+		if ((array[0] != ' ') && (array[0] == array[1]) && array[1] == array[2])
+		{
+			array[0] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+		}
+		else if ((array[3] != ' ') && (array[3] == array[4]) && array[4] == array[5])
+		{
+			array[3] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+		}
+		else if ((array[6] != ' ') && (array[6] == array[7]) && array[7] == array[8])
+		{
+			array[6] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+		}
+		// columns
+		if ((array[0] != ' ') && (array[0] == array[3]) && array[3] == array[6])
+		{
+			array[0] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+		}
+		else if ((array[1] != ' ') && (array[1] == array[4]) && array[4] == array[7])
+		{
+			array[1] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+		}
+		else if ((array[2] != ' ') && (array[2] == array[5]) && array[5] == array[8])
+		{
+			array[0] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+		}
+		//diagonals
+		else if ((array[0] != ' ') && (array[0] == array[4]) && array[4] == array[8])
+		{
+			array[0] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+		}
+		else if ((array[2] != ' ') && (array[2] == array[4]) && array[4] == array[6])
+		{
+			array[2] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+		}
+		else if ((array[6] != ' ') && (array[6] == array[4]) && array[4] == array[2])
+		{
+			array[6] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+		}
+		else if ((array[8] != ' ') && (array[8] == array[4]) && array[4] == array[0])
+		{
+			array[8] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+		}
+		else {
+			return false;
+		}
+
+		return true;
+	
+	}
+
 };
 /*
 char playerPiece() {
@@ -138,6 +194,7 @@ int main()
 		game.performPlayer();
 		game.performComputer();
 		game.displayBoard();
+		game.verifyWinner();
 	}
 	
 
