@@ -2,8 +2,6 @@
 using namespace std;
 
 
-char playerSymbol;
-
 class TicTacToe {
 private:
 	char array[9];
@@ -32,7 +30,7 @@ public:
 
 
 	void startGame() {
-	 currentPlayer = askPlayer("Do you want to go first? (y/n)") == 'y' ? 'X' : 'O';
+		currentPlayer = askPlayer("Do you want to go first? (y/n)") == 'y' ? 'X' : 'O';
 	}
 
 	void displayBoard() {
@@ -44,14 +42,14 @@ public:
 			}
 		}
 	}
-	
+
 	void performPlayer() {
 		playerMove(array);
-	
+
 	}
 
 	void performComputer() {
-		 computerMove(array);
+		computerMove(array);
 	}
 
 	void verifyWinner() {
@@ -67,6 +65,7 @@ private:
 
 	bool playerMove(char* array) {
 		int position;
+		int* positionPtr = &position;
 		cout << "Enter a number based on board position " << endl;
 		// this is probably the biggest changes
 		// !(cin >> position) will ask the question as part of the loop and it must have an answer
@@ -79,19 +78,20 @@ private:
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		}
-		array[position - 1] = currentPlayer;
+		array[*positionPtr - 1] = currentPlayer;
 		return true;
 
 	}
 
 	bool computerMove(char* array) {
 		int position;
+		int* positionPtr = &position;
 		srand(time(0));
 
 		while (true) {
-			position = rand() % 9;
-			if (array[position] == ' ') {
-				array[position] = updateOpponent();
+			*positionPtr = rand() % 9;
+			if (array[*positionPtr] == ' ') {
+				array[*positionPtr] = updateOpponent();
 				return true;
 				break;
 			}
@@ -157,32 +157,10 @@ private:
 		}
 
 		return true;
-	
+
 	}
 
 };
-/*
-char playerPiece() {
-	char go_first = askPlayer("Do you want to go first? (y / no) ");
-	if (go_first == 'y') {
-		cout << "Great! You go first" << endl;
-		 return player;
-	}
-	else {
-		cout << "Sure, i'll go first" << endl;
-		return computer;
-	}
-}
-
-char opponentPiece(char symbol) {
-	if (symbol == player) {
-		return computer;
-	}
-	else {
-		return player;
-	}
-}
-*/
 int main()
 {
 	TicTacToe game;
@@ -197,9 +175,4 @@ int main()
 		game.verifyWinner();
 	}
 	
-
-	
-
-
-
 }
