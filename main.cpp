@@ -72,7 +72,7 @@ private:
 		// to save on checking all positions, just validated numbers below or above 1
 		// cin.peek() will check the next character after any numbers to confirm it is a new line, if it is a . for example for a decimal, it will register invalid
 		// position != static_cast<int>(position) just makes sure it is a number
-		while (!(cin >> position) || position < 1 || position > 9 || cin.peek() != '\n' || position != static_cast<int>(position))
+		while (!(cin >> *positionPtr) || *positionPtr < 1 || *positionPtr > 9 || cin.peek() != '\n' || *positionPtr != static_cast<int>(*positionPtr))
 		{
 			cout << "Invalid, position has been taken" << endl;
 			cin.clear();
