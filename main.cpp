@@ -30,7 +30,15 @@ public:
 
 
 	void startGame() {
-		currentPlayer = askPlayer("Do you want to go first? (y/n)") == 'y' ? 'X' : 'O';
+		currentPlayer = askPlayer("Do you want to go first? (y/n) ") == 'y' ? 'X' : 'O';
+		if (currentPlayer == 'X') {
+			cout << "Smart choice? you have chosen X as your marker."<<endl;
+		}
+		if (currentPlayer == 'O') {
+			cout << "Computer has started the game. GOOD LUCK!"<<endl;
+			performComputer();
+			displayBoard();
+		}
 	}
 
 	void displayBoard() {
