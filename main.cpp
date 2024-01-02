@@ -60,8 +60,8 @@ public:
 		computerMove(array);
 	}
 
-	void verifyWinner() {
-		checkWinner(array, currentPlayer, opponent);
+	bool verifyWinner() {
+		return checkWinner(array, currentPlayer, opponent);
 	}
 
 private:
@@ -120,45 +120,45 @@ private:
 		// rows
 		if ((array[0] != ' ') && (array[0] == array[1]) && array[1] == array[2])
 		{
-			array[0] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+			array[0] == player ? cout << player << " IS THE WINNER" << endl : cout << "YOU LOSE "<<computer << " IS THE WINNER" << endl;
 		}
 		else if ((array[3] != ' ') && (array[3] == array[4]) && array[4] == array[5])
 		{
-			array[3] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+			array[3] == player ? cout << player << " IS THE WINNER" << endl : cout << "YOU LOSE " << computer << " IS THE WINNER"<< endl;
 		}
 		else if ((array[6] != ' ') && (array[6] == array[7]) && array[7] == array[8])
 		{
-			array[6] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+			array[6] == player ? cout << player << " IS THE WINNER" << endl : cout << "YOU LOSE " << computer << " IS THE WINNER" << endl;
 		}
 		// columns
 		if ((array[0] != ' ') && (array[0] == array[3]) && array[3] == array[6])
 		{
-			array[0] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+			array[0] == player ? cout << player << " IS THE WINNER" << endl : cout << "YOU LOSE " << computer << " IS THE WINNER" << endl;
 		}
 		else if ((array[1] != ' ') && (array[1] == array[4]) && array[4] == array[7])
 		{
-			array[1] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+			array[1] == player ? cout << player << " IS THE WINNER" << endl : cout << "YOU LOSE " << computer << " IS THE WINNER" << endl;
 		}
 		else if ((array[2] != ' ') && (array[2] == array[5]) && array[5] == array[8])
 		{
-			array[0] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+			array[0] == player ? cout << player << "IS THE WINNER" << endl : cout << "YOU LOSE " << computer << " IS THE WINNER" << endl;
 		}
 		//diagonals
 		else if ((array[0] != ' ') && (array[0] == array[4]) && array[4] == array[8])
 		{
-			array[0] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+			array[0] == player ? cout << player << " IS THE WINNER" << endl : cout << "YOU LOSE " << computer << " IS THE WINNER"<< endl;
 		}
 		else if ((array[2] != ' ') && (array[2] == array[4]) && array[4] == array[6])
 		{
-			array[2] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+			array[2] == player ? cout << player << " IS THE WINNER" << endl : cout << "YOU LOSE " << computer << " IS THE WINNER" << endl;
 		}
 		else if ((array[6] != ' ') && (array[6] == array[4]) && array[4] == array[2])
 		{
-			array[6] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+			array[6] == player ? cout << player << " IS THE WINNER" << endl : cout << "YOU LOSE " << computer << " IS THE WINNER" << endl;
 		}
 		else if ((array[8] != ' ') && (array[8] == array[4]) && array[4] == array[0])
 		{
-			array[8] == player ? cout << "YOU WIN" << endl : cout << "You lose" << endl;
+			array[8] == player ? cout << player << " IS THE WINNER" << endl : cout << "YOU LOSE " << computer << " IS THE WINNER" << endl;
 		}
 		else {
 			return false;
@@ -172,15 +172,19 @@ private:
 int main()
 {
 	TicTacToe game;
+	bool running = true;
 	game.instructions();
 	game.guide();
 	game.startGame();
 	
-	for (int i = 0; i <= 9; i++) {
+	
+	while (running) {
 		game.performPlayer();
 		game.performComputer();
 		game.displayBoard();
-		game.verifyWinner();
+		if (game.verifyWinner()) {
+			break;
+		}
 	}
 	
 }
