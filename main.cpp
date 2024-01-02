@@ -4,6 +4,7 @@ using namespace std;
 
 class TicTacToe {
 private:
+	// private variables for encapsulation
 	char array[9];
 	char currentPlayer;
 	char opponent;
@@ -12,6 +13,7 @@ public:
 		updateOpponent();
 	}
 
+	// instructions and guide provide infomation for the user. 
 	void instructions() {
 		cout << "Welcome to tic toe land" << endl;
 		cout << "The board is a 3x3 grid and each cell represented by its row number" << endl;
@@ -28,7 +30,7 @@ public:
 		}
 	}
 
-
+	// start of the game
 	void startGame() {
 		currentPlayer = askPlayer("Do you want to go first? (y/n) ") == 'y' ? 'X' : 'O';
 		if (currentPlayer == 'X') {
@@ -51,6 +53,7 @@ public:
 		}
 	}
 
+	// methods for abstraction  
 	void performPlayer() {
 		playerMove(array);
 
@@ -65,6 +68,7 @@ public:
 	}
 
 private:
+	// private methods for encapsulation
 	char updateOpponent() {
 		opponent = (currentPlayer == 'X') ? 'O' : 'X';
 		return opponent;
@@ -171,13 +175,16 @@ private:
 };
 int main()
 {
+	// game object
 	TicTacToe game;
 	bool running = true;
+	// game begins in main 
 	game.instructions();
 	game.guide();
 	game.startGame();
 	
-	
+	// while loop to run the game whislt a winner has been declared. 
+	// There is a bug in this functionality as certain game scenarios do not provide expected outcome.
 	while (running) {
 		game.performPlayer();
 		game.performComputer();
